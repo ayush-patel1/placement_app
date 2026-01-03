@@ -14,8 +14,8 @@ app.use(cookieParser());
 
 
 router.post('/login', async (req, res) => {
-    // console.log("login api is called");
-
+    // console.log("login api is call");
+    
     try {
         const { username, password } = req.body;
         const user = await users.findOne({ username });
