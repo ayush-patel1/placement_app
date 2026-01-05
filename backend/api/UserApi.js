@@ -8,6 +8,7 @@ const app = express();
 const sendEmail = require("../sendEmail");
 const Token = require("../models/token")
 const crypto = require("crypto")
+const jwtSecret = process.env.JWT_SECRET
 require("dotenv").config();
 
 app.use(cookieParser());
@@ -41,7 +42,7 @@ router.post('/login', async (req, res) => {
                     return res.status(500).json({ message: "Error comparing passwords", error: err });
                 }
                 if (response) {
-                    const token = jwt.sign({ username: user.username }, "jwt-secret-key", { expiresIn: "1d" });
+                    const token = jwt.sign({ username: user.username }, jwtSecret, { expiresIn: "1d" });
                     res.cookie("token", token);
                     return res.status(200).json({ message: "Login Successful", user });
                 }
