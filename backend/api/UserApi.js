@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const app = express();
-const sendEmail = require("../sendEmail")
+const sendEmail = require("../sendEmail");
 const Token = require("../models/token")
 const crypto = require("crypto")
 require("dotenv").config();

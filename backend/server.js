@@ -1,18 +1,25 @@
-const express=require('express');
-const app=express();
+const express = require("express");
+const app = express();
+const port =8000;
 
-const PORT=process.env.PORT||3000;
+require("./db/connection");
+
+const cors = require("cors")
+
+//enable cors
+// app.use(cors(
+//     {
+//         origin:"https://placement-planner.netlify.app",
+//         methods:["GET","POST"],
+//         credentials:true,
+//     }
+// ));
+
+app.use("/api/questions", require("./api/QuesApi"));
+app.use("/api/users", require("./api/UserApi"));
+app.use("/api/notes", require("./api/NotesApi"));
 
 app.use(express.json());
-
-app.get('/',(req,res)=>{
-    console.log(('Received a request at /'));
-    res.status(200).json({
-        message:'Server is running',
-        status_code:200
-    })
+app.listen(port, () => {
+    console.log("Server is connected successfully");
 })
-
-app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`);
-});
