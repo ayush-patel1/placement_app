@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 require("./db/connection");
-const port=8000
+const port = 8000
 const cors = require("cors")
 
 //enable cors
@@ -17,9 +17,9 @@ const cors = require("cors")
 
 app.use(express.json());
 
-app.use("/api/questions", require("./api/QuesApi"));
-app.use("/api/users", require("./api/UserApi"));
-app.use("/api/notes", require("./api/NotesApi"));
+app.use("/api/questions", require("./routes/questionRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/notes", require("./routes/notesRoutes"));
 app.get("/", (req, res) => {
     res.send("Hello from backend server");
 })
