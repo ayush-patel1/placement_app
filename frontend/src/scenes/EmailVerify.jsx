@@ -11,7 +11,7 @@ const EmailVerify = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:8000/api/users/${param.id}/verify/${param.token}`;
+        const url = `https://placement-app-ifse.onrender.com/api/users/${param.id}/verify/${param.token}`;
         console.log("hiiii")
         const { data } = await axios.get(url);
         console.log(data);
