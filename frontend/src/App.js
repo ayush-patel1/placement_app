@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
 import Home from "./scenes/Home";
 import Dsa from "./scenes/Dsa";
 import MachineLearn from "./scenes/MachineLearn";
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/resumemaker' element={<ResumeMaker />} />
             <Route path='/dsa' element={<Dsa />} />
             <Route path='/ml' element={<MachineLearn />} />

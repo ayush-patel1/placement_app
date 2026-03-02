@@ -27,7 +27,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://placement-planner-app.onrender.com/login", {
+            const response = await axios.post("http://localhost:8000/api/users/login", {
                 username,
                 password,
             });
@@ -59,7 +59,7 @@ const Login = () => {
         e.preventDefault();
         setmsg("");
         try {
-            const response = await axios.post("https://placement-planner-app.onrender.com/signup", {
+            const response = await axios.post("http://localhost:8000/api/users/signup", {
                 username,
                 email,
                 phoneNumber,

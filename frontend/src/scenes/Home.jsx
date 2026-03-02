@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
-import Cards from '../components/Cards'
+import Cards from '../components/Card'
 
 const cardinfo = [
   {
@@ -40,14 +40,14 @@ const Home = () => {
       <div>
         <NavBar />
         <div className='bg-[#0b2d39]'>
-            <div className="wrapper">
-              {
-                cardinfo.map((data) => (
-                  <Cards key={data.id} img={data.img} title={data.title} description={data.description} link={data.link} />
-                ))
-              }
-            </div>
+          <div className="wrapper">
+            {
+              cardinfo.map((data) => (
+                <Cards key={data.id} img={data.img} title={data.title} description={data.description} link={data.link} />
+              ))
+            }
           </div>
+        </div>
       </div>
     </>
   )

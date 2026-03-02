@@ -64,7 +64,7 @@ const NavBar = () => {
               <li
                 key="4"
                 className="px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-200 hover:text-green-300"
-                onClick={() => handleClick({ endpoint: "/", key: "4" })}
+                onClick={() => handleClick({ endpoint: "/login", key: "4" })}
               >
                 Login
               </li>
@@ -101,7 +101,7 @@ const NavBar = () => {
                 <li
                   key="4"
                   className="px-4 cursor-pointer capitalize py-6 text-4xl"
-                  onClick={() => handleClick({ endpoint: "/", key: "4" })}
+                  onClick={() => handleClick({ endpoint: "/login", key: "4" })}
                 >
                   Login
                 </li>
