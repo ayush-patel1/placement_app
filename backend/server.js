@@ -9,7 +9,7 @@ const cors = require("cors")
 //enable cors
 app.use(cors(
     {
-        origin: process.env.BASE_URL || "http://localhost:5173",
+        origin: (process.env.BASE_URL || "http://localhost:5173").replace(/\/+$/, ''),
         methods: ["GET", "POST"],
         credentials: true,
     }

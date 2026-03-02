@@ -55,6 +55,7 @@ const login = async (req, res) => {
 // Signup controller
 const signup = async (req, res) => {
     try {
+        console.log("Signup request body:", JSON.stringify(req.body));
         const { username, email, phoneNumber, password } = req.body;
         const userExist = await users.findOne({
             $or: [

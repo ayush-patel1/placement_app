@@ -82,7 +82,7 @@ const Login = () => {
         <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
             <div className="forms-container">
                 <div className="signin-signup">
-                    <form action="#" className="sign-in-form">
+                    <form onSubmit={handleLogin} className="sign-in-form">
                         <h2 className="title">Sign in</h2>
                         <div className="input-field">
                             <i className="fas fa-user"></i>
@@ -92,7 +92,7 @@ const Login = () => {
                             <i className="fas fa-lock"></i>
                             <input type="password" value={password} onChange={(e) => setpassword(e.target.value)} placeholder="Password" />
                         </div>
-                        <input onClick={handleLogin} type="submit" value="Login" className="btn solid" />
+                        <input type="submit" value="Login" className="btn solid" />
                         {/* <p className="social-text">Or Sign in with social platforms</p> */}
                         <div className="social-media">
                             {/* <a href="#" className="social-icon">
@@ -109,7 +109,7 @@ const Login = () => {
               </a> */}
                         </div>
                     </form>
-                    <form action="#" className="sign-up-form">
+                    <form onSubmit={handleSignup} className="sign-up-form">
                         <h2 className="title">Sign up</h2>
                         <div className="input-field">
                             <i className="fas fa-user"></i>
@@ -132,7 +132,7 @@ const Login = () => {
                                 {msg}
                             </div>
                         )}
-                        <input type="submit" onClick={handleSignup} className="btn" value="Sign up" />
+                        <input type="submit" className="btn" value="Sign up" />
                         {/* <p className="social-text">Or Sign up with social platforms</p> */}
                         <div className="social-media">
                             {/* <a href="#" className="social-icon">
