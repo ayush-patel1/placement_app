@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../sendEmail");
 const Token = require("../models/token");
 const crypto = require("crypto");
-const jwtSecret = process.env.JWT_SECRET;
 require("dotenv").config();
+const jwtSecret = process.env.JWT_SECRET;
 
 // Login controller
 const login = async (req, res) => {
