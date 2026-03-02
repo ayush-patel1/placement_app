@@ -61,7 +61,7 @@ const QuesList = () => {
         const fetchQues = async () => {
             try {
                 const lowercaseId = id.toLowerCase();
-                const response = await axios.post('https://placement-app-ifse.onrender.com/api/questions/getAllQuestions', { tags: lowercaseId });
+                const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/questions/getAllQuestions`, { tags: lowercaseId });
                 // console.log("list of question", response.data.data);
                 settaggedQuestions(response.data.data);
             }

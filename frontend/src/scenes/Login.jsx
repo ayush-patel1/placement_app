@@ -27,7 +27,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://placement-app-ifse.onrender.com/api/users/login", {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/login`, {
                 username,
                 password,
             });
@@ -59,7 +59,7 @@ const Login = () => {
         e.preventDefault();
         setmsg("");
         try {
-            const response = await axios.post("https://placement-app-ifse.onrender.com/api/users/signup", {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/signup`, {
                 username,
                 email,
                 phoneNumber,
