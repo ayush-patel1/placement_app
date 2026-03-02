@@ -1,117 +1,82 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
-import Cards from '../components/Card'
+
+const dsaIcons = {
+  "Dynamic Programming": "dynamic_feed",
+  "Graph": "hub",
+  "Tree": "account_tree",
+  "Binary Search": "search",
+  "Queue": "queue",
+  "Stack": "layers",
+  "Array": "grid_view",
+  "String": "text_fields",
+  "Backtracking": "undo",
+  "Linkedlist": "link",
+  "Recursion": "replay",
+  "Heaps": "filter_list",
+  "Binary Search Tree": "park",
+  "Trie": "schema",
+  "Segment Tree": "segment",
+};
+
+const dsaColors = ["blue", "purple", "teal", "orange", "pink", "indigo", "cyan", "emerald", "amber", "violet", "rose", "lime", "sky", "fuchsia", "green"];
 
 const cardinfo = [
-  {
-    id: 1,
-    img: "https://res.cloudinary.com/codecrucks/images/f_webp,q_auto/v1635307877/dynamic-programming/dynamic-programming.jpg?_i=AA",
-    title: "Dynamic Programming",
-    tag: "Dynamic Programming",
-  },
-  {
-    id: 2,
-    img: "https://datatrained.com/post/wp-content/uploads/2022/04/graph-in-data-structure-scaled.jpg",
-    title: "Graph",
-    tag: "Graph",
-  },
-  {
-    id: 3,
-    img: "https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2021_09_Tree-Data-Structures.jpg",
-    title: "Tree",
-    tag: "Tree",
-  },
-  {
-    id: 4,
-    img: "https://miro.medium.com/v2/resize:fit:1400/1*5xashi8Yq2YsaJgx2IVoUA.jpeg",
-    title: "Binary Search",
-    tag: "Binary search",
-  },
-  {
-    id: 5,
-    img: "https://cdn.educba.com/academy/wp-content/uploads/2019/12/Queue-in-Data-Structure.jpg",
-    title: "Queue",
-    tag: "Queue",
-  },
-  {
-    id: 6,
-    img: "https://www.softwaretestinghelp.com/wp-content/qa/uploads/2019/06/STACK.png",
-    title: "Stack",
-    tag: "Stack",
-  },
-  {
-    id: 7,
-    img: "https://miro.medium.com/v2/resize:fit:691/1*fb0_9D02RHiW8mTi4ZkArw.png",
-    title: "Array",
-    tag: "Array",
-  },
-  {
-    id: 8,
-    img: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230808183250/String-Data-Structure1.png",
-    title: "String",
-    tag: "String",
-  },
-  {
-    id: 9,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN8l9998JaVkEAcTyqQKYcfqDAYcuzcNVu4Q&usqp=CAU",
-    title: "Backtracking",
-    tag: "Backtracking",
-  },
-  {
-    id: 10,
-    img: "https://res.cloudinary.com/practicaldev/image/fetch/s--x7xdPS6---/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nadznquytd6snyjxo1lc.png",
-    title: "Linkedlist",
-    tag: "Linkedlist",
-  },
-  {
-    id: 11,
-    img: "https://techgeekbuzz.com/media/tutorial_images/Recursion.jpg",
-    title: "Recursion",
-    tag: "Recursion",
-  },
-  {
-    id: 12,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQptsepGSY4d5C3lRyE3qdygnODa8pVxUQLA&usqp=CAU",
-    title: "Heaps",
-    tag: "Heaps",
-  },
-  {
-    id: 13,
-    img: "https://i.ytimg.com/vi/PgexmiPps2o/maxresdefault.jpg",
-    title: "Binary Search Tree",
-    tag: "Binary Search Tree",
-  },
-  {
-    id: 14,
-    img: "https://i.ytimg.com/vi/-urNrIAQnNo/maxresdefault.jpg",
-    title: "Trie",
-    tag: "Trie",
-  }
-  ,
-  {
-    id: 15,
-    img: "https://i.ytimg.com/vi/xztU7lmDLv8/maxresdefault.jpg",
-    title: "Segment Tree",
-    tag: "Segment Tree",
-  }
-]
+  { id: 1, title: "Dynamic Programming", tag: "Dynamic Programming" },
+  { id: 2, title: "Graph", tag: "Graph" },
+  { id: 3, title: "Tree", tag: "Tree" },
+  { id: 4, title: "Binary Search", tag: "Binary search" },
+  { id: 5, title: "Queue", tag: "Queue" },
+  { id: 6, title: "Stack", tag: "Stack" },
+  { id: 7, title: "Array", tag: "Array" },
+  { id: 8, title: "String", tag: "String" },
+  { id: 9, title: "Backtracking", tag: "Backtracking" },
+  { id: 10, title: "Linkedlist", tag: "Linkedlist" },
+  { id: 11, title: "Recursion", tag: "Recursion" },
+  { id: 12, title: "Heaps", tag: "Heaps" },
+  { id: 13, title: "Binary Search Tree", tag: "Binary Search Tree" },
+  { id: 14, title: "Trie", tag: "Trie" },
+  { id: 15, title: "Segment Tree", tag: "Segment Tree" },
+];
+
 const DSA = () => {
-
-
   return (
-    <>
+    <div className="min-h-screen bg-bg-dark">
       <NavBar />
-      <div className='bg-[#0b2d39]'>
-        <div className="wrapper">
-          {
-            cardinfo.map((data) => (
-              <Cards key={data.id} img={data.img} title={data.title} description={data.description} link=
-                {`question/${data.tag}`} />
-            ))
-          }
+      <div className="max-w-[1200px] mx-auto px-6 pt-24 pb-16">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Data Structures & Algorithms</h1>
+          <p className="text-slate-400 text-lg">Choose a topic and start practicing curated problems.</p>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {cardinfo.map((data, i) => {
+            const color = dsaColors[i % dsaColors.length];
+            const icon = dsaIcons[data.title] || "code";
+            return (
+              <a
+                key={data.id}
+                href={`question/${data.tag}`}
+                className="group relative glass-card rounded-2xl p-5 cursor-pointer block"
+              >
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500 pointer-events-none" />
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className={`p-3 rounded-xl bg-${color}-500/10 text-${color}-400 ring-1 ring-${color}-500/20`}>
+                    <span className="material-symbols-outlined text-2xl">{icon}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg">{data.title}</h3>
+                    <p className="text-slate-500 text-sm">Practice problems →</p>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

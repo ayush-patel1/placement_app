@@ -1,5 +1,6 @@
-/* App global styles - reset only, no layout constraints */
+/* App global styles */
 #root {
   width: 100%;
   min-height: 100vh;
+  background-color: #0f172a;
 }

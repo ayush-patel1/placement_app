@@ -1,64 +1,83 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
-import { Card } from "@material-tailwind/react";
 
 const dataDescription = [
     {
         id: 1,
-        title: "Operating System(OS) Preparation",
+        title: "Operating System (OS) Preparation",
         about: "OS interview prep: grasp process management, memory allocation, file systems, networking, and key algorithms.",
-        img: "https://static.javatpoint.com/interview/images/operating-system-interview-questions.png",
+        icon: "memory",
         link: "https://drive.google.com/file/d/1-ELGdN8DLwoTpylILrMKhQRvdy5xbsbr/view?usp=sharing",
         ytlink: "https://www.youtube.com/playlist?list=PLDzeHZWIZsTr3nwuTegHLa2qlI81QweYG"
     },
     {
         id: 2,
-        title: "Database Management System(DBMS) Preparation",
+        title: "Database Management System (DBMS)",
         about: "DBMS interview prep involves mastering SQL, relational concepts, normalization, and transaction management.",
-        img: "https://edurev.gumlet.io/AllImages/original/ApplicationImages/CourseImages/fade2f81-0071-4fb7-842c-f13fca514185_CI.png",
+        icon: "storage",
         link: "https://drive.google.com/file/d/1l6xuJr_zkQCbb3nD6LF8K4r8IgRkDPls/view?usp=sharing",
         ytlink: "https://www.youtube.com/playlist?list=PLDzeHZWIZsTpukecmA2p5rhHM14bl2dHU"
     },
     {
         id: 3,
-        title: "Computer Networks(CN) Interview Questions",
-        about: "Computer Networks interview: expect questions on OSI model, TCP/IP, security, routing, and network topologies.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKNnAU9ua2OnBfnKNE9uKe9Ae10n2J4dkP8q-spWpCKIoVSPDukHxdX1vcn7ej5AGWRU&usqp=CAU",
+        title: "Computer Networks (CN)",
+        about: "Computer Networks interview: questions on OSI model, TCP/IP, security, routing, and network topologies.",
+        icon: "lan",
         link: "https://www.interviewbit.com/networking-interview-questions/",
         ytlink: "https://www.youtube.com/watch?v=IPvYjXCsTg8&ab_channel=KunalKushwaha"
     },
     {
         id: 4,
-        title: "Object Oriented Programming(OOPs) Preparation",
-        about: "OOP interview prep: grasp encapsulation, inheritance, polymorphism, and abstraction, showcasing proficiency in languages like Java or C++.",
-        img: "https://t4.ftcdn.net/jpg/01/08/96/57/360_F_108965707_UhpFxvquwgXVfWlFpg9vYGJfz8mmZ33u.jpg",
+        title: "Object Oriented Programming (OOPs)",
+        about: "OOP interview prep: grasp encapsulation, inheritance, polymorphism, and abstraction in Java or C++.",
+        icon: "category",
         link: "https://www.geeksforgeeks.org/object-oriented-programming-in-cpp/",
         ytlink: "https://www.youtube.com/playlist?list=PLA8BpojmT5JF4KKQCEIqURc71z6nvYXEK"
     }
 ];
 
+const colors = ["teal", "blue", "orange", "purple"];
+
 const Csfundamental = () => {
     return (
-        <>
+        <div className="min-h-screen bg-bg-dark">
             <NavBar />
-            {dataDescription.map((data) => (
-                <Card key={data.id} className='mx-4 md:mx-8 lg:mx-16 xl:mx-20 bg-white shadow-lg overflow-hidden rounded-md mb-4 hover:bg-blue-100'>
-                    <div className="flex flex-col md:flex-row items-center">
-                        <div className="w-full md:w-1/4 overflow-hidden mb-4 md:mb-0">
-                            <img src={data.img} alt="Card Img" className="w-80 h-64 object-cover rounded-md" />
-                        </div>
-                        <div className="w-full md:w-3/4 p-6 flex flex-col justify-center align-middle text-center">
-                            <p className='font-bold text-3xl text-gray-800 mb-3'>{data.title}</p>
-                            <p className='text-gray-600 mb-3'>{data.about}</p>
-                            <div className='flex gap-4 justify-center mt-2'>
-                                <a href={data.link} target='_blank' rel="noreferrer" className='text-blue-500 hover:underline'>Learn from here =>></a>
-                                <a href={data.ytlink} target='_blank' rel="noreferrer" className='text-blue-500 hover:underline'>Watch from here =>></a>
+            <div className="max-w-[1200px] mx-auto px-6 pt-24 pb-16">
+                <div className="mb-8">
+                    <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">CS Fundamentals</h1>
+                    <p className="text-slate-400 text-lg">OS, DBMS, Networks & OOPs — core concepts for every engineer.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {dataDescription.map((data, i) => {
+                        const color = colors[i % colors.length];
+                        return (
+                            <div key={data.id} className="glass-card rounded-2xl p-6">
+                                <div className="flex items-start gap-4">
+                                    <div className={`p-3 rounded-xl bg-${color}-500/10 text-${color}-400 ring-1 ring-${color}-500/20 shrink-0`}>
+                                        <span className="material-symbols-outlined text-2xl">{data.icon}</span>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white font-semibold text-lg mb-2">{data.title}</h3>
+                                        <p className="text-slate-400 text-sm leading-relaxed mb-4">{data.about}</p>
+                                        <div className="flex gap-4">
+                                            <a href={data.link} target="_blank" rel="noreferrer"
+                                                className="text-primary text-sm font-medium hover:text-primary/80 flex items-center gap-1">
+                                                Notes <span className="material-symbols-outlined text-sm">open_in_new</span>
+                                            </a>
+                                            <a href={data.ytlink} target="_blank" rel="noreferrer"
+                                                className="text-secondary text-sm font-medium hover:text-secondary/80 flex items-center gap-1">
+                                                Watch <span className="material-symbols-outlined text-sm">play_circle</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </Card>
-            ))}
-        </>
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
     )
 }
 

@@ -38,88 +38,89 @@ const ResumeMaker = () => {
     const [allPorData, setallPorData] = useState([]);
     const [allExtraCurricularData, setallExtraCurricularData] = useState([]);
 
-
-
-    const [isHovered, setIsHovered] = useState(false);
-    const handleHover = () => {
-        setIsHovered(!isHovered);
-    };
-
     const nextViewportRef = useRef(null);
 
     const handleScrollToNextViewport = () => {
         if (isAuthenticated) {
             nextViewportRef.current.scrollIntoView({ behavior: 'smooth' });
         } else {
-            // Optionally show an alert or handle it in some other way
             alert('Please login to access this feature.');
         }
     };
 
-
     return (
-        <>
-
+        <div className="min-h-screen bg-bg-dark">
             <NavBar />
-            {/* <div> */}
-                <div className=" bg-[#0b2d39]">
-                    <div className='flex sm:flex-row flex-col'>
-                        <div className='text-[#d3eaf2] sm:text-[5rem] text-[1.5rem] sm:mr-[2rem] sm:mt-[4rem] mt-[2rem]'>
-                            <p className='sm:ml-[6rem] ml-[1rem]'>
-                                An
-                                <span className='text-[#55cb51] sm:text-[6rem] text-[2.5rem] font-bold'> Excellent </span>
-                                and
-                                <br />
-                                a very
-                                <span className='text-[#55cb51] sm:text-[6rem] text-[2.5rem] font-bold'> Easy </span>
-                                way to
-                                <br />
-                                build a
-                                <span className='text-[#55cb51] sm:text-[6rem] text-[2.5rem] font-bold'> Resume </span>
+
+            {/* Hero Section */}
+            <div className="relative w-full overflow-hidden mesh-bg">
+                <div className="absolute inset-0 hero-gradient pointer-events-none" />
+                <div className="max-w-[1200px] mx-auto px-6 pt-32 pb-16 relative z-10">
+                    <div className="flex flex-col md:flex-row items-center gap-8">
+                        {/* Text */}
+                        <div className="flex-1">
+                            <h1 className="text-4xl md:text-6xl font-black text-white leading-[1.1] mb-6">
+                                An <span className="gradient-text">Excellent</span> and
+                                <br />a very <span className="gradient-text">Easy</span> way to
+                                <br />build a <span className="text-secondary font-black">Resume</span>
+                            </h1>
+                            <p className="text-slate-400 text-lg mb-8 max-w-lg">
+                                Create ATS-friendly resumes with our builder and professional templates. Stand out from the crowd.
                             </p>
                         </div>
-                        <div className='sm:mt-[4rem] mt-[3rem] sm:w-[30rem]'>
-                            <img src={Resumephotologo} alt="ResumePhotoLogo" onMouseEnter={handleHover} onMouseLeave={handleHover} />
+                        {/* Image */}
+                        <div className="flex-shrink-0 w-full md:w-[350px]">
+                            <img src={Resumephotologo} alt="Resume Templates" className="w-full drop-shadow-2xl" />
                         </div>
                     </div>
-                    <div className='flex-col p-2 sm:flex-row mt-[4rem] ml-[5px] mr-[5px]  sm:ml-[20rem] sm:mr-[20rem] bg-[#ade0d0] sm:h-[4rem] rounded-lg flex justify-center items-center'>
-                        <p className='font-bold text-[#132e40] sm:text-[2rem] sm:mr-[1rem]' >Start building awesome resume 🛠️📑</p>
-                        <button className='bg-[#0c2638] p-1 text-[white] sm:h-[3rem] sm:w-[7rem] rounded-lg ' onClick={handleScrollToNextViewport}>Click Here</button>
+
+                    {/* CTA Bar */}
+                    <div className="mt-12 glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p className="text-white font-bold text-lg sm:text-xl">
+                            Start building awesome resume 🛠️📑
+                        </p>
+                        <button
+                            className="glow-button px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold text-base flex items-center gap-2"
+                            onClick={handleScrollToNextViewport}
+                        >
+                            Get Started
+                            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
                     </div>
                 </div>
-                {
-                    isAuthenticated &&
-                    <>
-                        <div ref={nextViewportRef} className=' bg-[#0b2d39]'>
-                            <div>
-                                <p className='text-[1.5rem] sm:text-[2.5rem] p-2 sm:p-10 text-[#e3d8eb] text-center sm:mb-[1rem]'>One step closer in seeking job opportunities</p>
-                            </div>
-                            <div className='flex flex-col sm:flex-row w-[100%]'>
-                                <personaldetail.Provider value={{ formData, setformData, confirmedData, setconfirmedData }}>
-                                    <educationaldetail.Provider value={{ allEducationData, setallEducationData }}>
-                                        <experiencedetail.Provider value={{ allExperienceData, setallExperienceData }}>
-                                            <skilldetail.Provider value={{ skillData, setskillData, allskillData, setallskillData }}>
-                                                <projectdetail.Provider value={{ allProjectData, setallProjectData }}>
-                                                    <achievementdetail.Provider value={{ allAchievementData, setallAchievementData }}>
-                                                        <pordetail.Provider value={{ allPorData, setallPorData }}>
-                                                            <extracurriculardetail.Provider value={{ allExtraCurricularData, setallExtraCurricularData }}>
-                                                                <ResumeForm />
-                                                                <ResumePreview />
-                                                            </extracurriculardetail.Provider>
-                                                        </pordetail.Provider>
-                                                    </achievementdetail.Provider>
-                                                </projectdetail.Provider>
-                                            </skilldetail.Provider>
-                                        </experiencedetail.Provider>
-                                    </educationaldetail.Provider>
-                                </personaldetail.Provider>
-                            </div>
-                        </div>
-                    </>
-                }
+            </div>
 
-            {/* </div> */}
-        </>
+            {/* Resume Form & Preview (authenticated only) */}
+            {isAuthenticated && (
+                <div ref={nextViewportRef} className="bg-bg-dark">
+                    <div className="max-w-[1400px] mx-auto px-6 py-12">
+                        <p className="text-2xl md:text-3xl text-slate-300 text-center mb-8">
+                            One step closer to seeking job opportunities
+                        </p>
+                        <div className="flex flex-col md:flex-row w-full gap-6">
+                            <personaldetail.Provider value={{ formData, setformData, confirmedData, setconfirmedData }}>
+                                <educationaldetail.Provider value={{ allEducationData, setallEducationData }}>
+                                    <experiencedetail.Provider value={{ allExperienceData, setallExperienceData }}>
+                                        <skilldetail.Provider value={{ skillData, setskillData, allskillData, setallskillData }}>
+                                            <projectdetail.Provider value={{ allProjectData, setallProjectData }}>
+                                                <achievementdetail.Provider value={{ allAchievementData, setallAchievementData }}>
+                                                    <pordetail.Provider value={{ allPorData, setallPorData }}>
+                                                        <extracurriculardetail.Provider value={{ allExtraCurricularData, setallExtraCurricularData }}>
+                                                            <ResumeForm />
+                                                            <ResumePreview />
+                                                        </extracurriculardetail.Provider>
+                                                    </pordetail.Provider>
+                                                </achievementdetail.Provider>
+                                            </projectdetail.Provider>
+                                        </skilldetail.Provider>
+                                    </experiencedetail.Provider>
+                                </educationaldetail.Provider>
+                            </personaldetail.Provider>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
     )
 }
 
